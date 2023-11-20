@@ -1,0 +1,6 @@
+@ApiDivisionWithOTL_HostAddress = http://localhost:5114
+
+### Quel temps fera t il ? 
+GET {{ApiDivisionWithOTL_HostAddress}}/WeatherForecast
+Accept: application/json
+
