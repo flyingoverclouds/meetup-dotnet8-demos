@@ -1,6 +1,14 @@
-@ApiDivision_HostAddress = http://localhost:5114
+@ApiDivisionWithOTL_HostAddress = http://localhost:5114
 
-GET {{ApiDivision_HostAddress}}/weatherforecast/
+### Quel temps fera t il ? 
+GET {{ApiDivisionWithOTL_HostAddress}}/weatherforecast/
 Accept: application/json
 
-###
+### Une division ? 
+GET {{ApiDivisionWithOTL_HostAddress}}/Division?numerateur=10&denominateur=5
+Accept: application/json
+
+### Une autre division ? 
+GET {{ApiDivisionWithOTL_HostAddress}}/Division?numerateur=5&denominateur=0
+Accept: application/json
+

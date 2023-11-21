@@ -5,9 +5,9 @@ VisualStudioVersion = 17.8.34309.116
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiDivision", "ApiDivision\ApiDivision.csproj", "{64CB7CC6-49B3-44C4-B036-15C07A99E57B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiDivision-WithOTL", "ApiDivision-WithOTL\ApiDivision-WithOTL.csproj", "{B751DFA8-2932-4B35-A8D1-4D082ED6BF3E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiDivision01-WithOTL", "ApiDivision-WithOTL\ApiDivision01-WithOTL.csproj", "{B751DFA8-2932-4B35-A8D1-4D082ED6BF3E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiDivision-CustomLog", "ApiDivision-CustomLog\ApiDivision-CustomLog.csproj", "{5DB34B6F-959E-4432-A8F6-2490D89C1CAD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiDivision02-CustomLog", "ApiDivision-CustomLog\ApiDivision02-CustomLog.csproj", "{5DB34B6F-959E-4432-A8F6-2490D89C1CAD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
