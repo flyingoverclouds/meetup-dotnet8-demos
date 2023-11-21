@@ -40,7 +40,7 @@ namespace ApiDivision.Controllers
     static partial class Log
     {
         [LoggerMessage(LogLevel.Information, "Weather returned {weather}")]
-        public static partial void WeatherReturned(this ILogger logger,[LogProperties] WeatherForecast weather);
+        public static partial void WeatherReturned(this ILogger logger,WeatherForecast weather);
 
     }
 }
