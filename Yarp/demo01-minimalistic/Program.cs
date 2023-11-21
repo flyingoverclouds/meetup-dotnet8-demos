@@ -1,14 +1,11 @@
 var builder = WebApplication.CreateBuilder(args);
 
-
-//builder.Services.AddReverseProxy()
-//    .LoadFromConfig(builder.Configuration.GetSection("ReverseProxy"));
-
+//01
 
 var app = builder.Build();
 
 app.MapGet("/", () => "Hello World!"); // inutile, mais c'est pour la démo :)
 
-//app.MapReverseProxy();
+//02
 
 app.Run();
