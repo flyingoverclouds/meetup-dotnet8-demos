@@ -11,7 +11,6 @@ namespace ApiDivision
         public string? Summary { get; set; }
 
         /// C'est une donnée sensible ... ne pas la logger !!! <summary>
-        [LogPropertyIgnore] 
         public string? FrileuName { get; set; }
     }
 }
