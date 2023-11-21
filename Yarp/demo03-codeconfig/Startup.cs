@@ -47,8 +47,8 @@ namespace Yarp.Sample
                 // personnalisation du pipeline de YARP
                 endpoints.MapReverseProxy(proxyPipeline =>
                 {
-                    // Utilisation d'un pipeline custom 
-                    proxyPipeline.Use(MyCustomProxyStep);
+                    // Utilisation d'un pipeline custom
+                    proxyPipeline.Use(PourFaireDuDebugProxyStep);
 
                     // On active l'affinité de Session et le LoadBalancing HTTP
                     proxyPipeline.UseSessionAffinity();
@@ -92,10 +92,14 @@ namespace Yarp.Sample
                 new ClusterConfig()
                 {
                     ClusterId = "cluster1",
-                    SessionAffinity = new SessionAffinityConfig { Enabled = true, Policy = "Cookie", AffinityKeyName = ".Yarp.ReverseProxy.Affinity" },
+                    SessionAffinity = new SessionAffinityConfig { 
+                        Enabled = true, 
+                        Policy = "Cookie", 
+                        AffinityKeyName = ".Yarp.ReverseProxy.Affinity" },
                     Destinations = new Dictionary<string, DestinationConfig>(StringComparer.OrdinalIgnoreCase)
                     {
-                        { "destination1", new DestinationConfig() { Address = "https://example.com" } },
+                        { "destination1", new DestinationConfig() { 
+                            Address = "https://example.com" } },
                         { "debugdestination1", new DestinationConfig() {
                             Address = "https://bing.com",
                             Metadata = debugMetadata  }
@@ -107,10 +111,10 @@ namespace Yarp.Sample
 
 
         /// <summary>
-        /// Custom proxy step that filters destinations based on a header in the inbound request
-        /// Looks at each destination metadata, and filters in/out based on their debug flag and the inbound header
+        /// ProxyStep personnalisé qui selectionne une destination en fonction de la valeur d'un Header HTTP.
+
         /// </summary>
-        public Task MyCustomProxyStep(HttpContext context, Func<Task> next)
+        public Task PourFaireDuDebugProxyStep(HttpContext context, Func<Task> next)
         {
             // Can read data from the request via the context
             var useDebugDestinations = context.Request.Headers.TryGetValue(DEBUG_HEADER, out var headerValues) && headerValues.Count == 1 && headerValues[0] == DEBUG_VALUE;
@@ -119,10 +123,9 @@ namespace Yarp.Sample
             var availableDestinationsFeature = context.Features.Get<IReverseProxyFeature>();
             var filteredDestinations = new List<DestinationState>();
 
-            // Filter destinations based on criteria
+            // Filter destinations based on criteria (presence du header 'debug' à la valeur 'true' )
             foreach (var d in availableDestinationsFeature.AvailableDestinations)
             {
-                //Todo: Replace with a lookup of metadata - but not currently exposed correctly here
                 if (d.DestinationId.Contains("debug") == useDebugDestinations) { filteredDestinations.Add(d); }
             }
             availableDestinationsFeature.AvailableDestinations = filteredDestinations;
