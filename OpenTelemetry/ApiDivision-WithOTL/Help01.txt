@@ -1,0 +1,12 @@
+﻿** pour le service : 
+
+    // Configurer la variable d'env OTEL_EXPORTER_OTLP_ENDPOINT http://localhost:16083
+    // pour alimenter n'importe quel endpoint compatible OpenTelemetry ( dashboard Aspire par exemple )
+    //metrics.AddOtlpExporter(); 
+
+
+
+** pour le logging : 
+     //options.AddOtlpExporter();
+
+

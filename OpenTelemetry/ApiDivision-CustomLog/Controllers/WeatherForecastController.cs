@@ -26,7 +26,8 @@ namespace ApiDivision.Controllers
             {
                 Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
                 TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
+                Summary = Summaries[Random.Shared.Next(Summaries.Length)],
+                FrileuName="Mr Winter"
             })
             .ToArray();
 
@@ -39,6 +40,7 @@ namespace ApiDivision.Controllers
     static partial class Log
     {
         [LoggerMessage(LogLevel.Information, "Weather returned {weather}")]
-        public static partial void WeatherReturned(this ILogger logger,WeatherForecast weather);
+        public static partial void WeatherReturned(this ILogger logger,[LogProperties] WeatherForecast weather);
+
     }
 }

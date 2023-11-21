@@ -20,20 +20,18 @@ builder.Services.AddOpenTelemetry()
     #endregion
 
     #region Exporters
-    //metrics.AddConsoleExporter(); // Pour affichier les traces ... sur la console :)
+    metrics.AddConsoleExporter(); // Pour affichier les traces ... sur la console :)
 
 
-    // Configurer la variable d'env OTEL_EXPORTER_OTLP_ENDPOINT http://localhost:16083
-    // pour alimenter n'importe quel endpoint compatible OpenTelemetry ( dashboard Aspire par exemple )
-    //metrics.AddOtlpExporter(); 
     #endregion
 });
+
+
 
 // ajout du logger OpenTelemetry
 builder.Logging.AddOpenTelemetry(options =>
 {
     //options.AddConsoleExporter();
-    //options.AddOtlpExporter();
 });
 
 

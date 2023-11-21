@@ -9,5 +9,9 @@ namespace ApiDivision
         public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
 
         public string? Summary { get; set; }
+
+        /// C'est une donnée sensible ... ne pas la logger !!! <summary>
+        [LogPropertyIgnore] 
+        public string? FrileuName { get; set; }
     }
 }
