@@ -31,8 +31,8 @@ namespace ApiDivision.Controllers
             })
             .ToArray();
 
+            //_logger.LogInformation("Weazer renvoyé " + mmeIrma[0]);
             _logger.WeatherReturned(mmeIrma[0]);
-
             return mmeIrma;
         }
     }
@@ -40,7 +40,7 @@ namespace ApiDivision.Controllers
     static partial class Log
     {
         [LoggerMessage(LogLevel.Information, "Weather returned {weather}")]
-        public static partial void WeatherReturned(this ILogger logger,WeatherForecast weather);
+        public static partial void WeatherReturned(this ILogger logger,[LogProperties] WeatherForecast weather);
 
     }
 }

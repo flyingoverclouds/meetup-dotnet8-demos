@@ -4,7 +4,7 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:18258",
+      "applicationUrl": "http://127.0.0.1:18258",
       "sslPort": 0
     }
   },
@@ -14,11 +14,10 @@
       "dotnetRunMessages": true,
       "launchBrowser": true,
       "launchUrl": "swagger",
-      "applicationUrl": "http://localhost:5114",
+      "applicationUrl": "http://127.0.0.1:5114",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "APPLICATIONINSIGHTS_CONNECTION_STRING": "InstrumentationKey=56d0e3cf-f7c5-4e58-b7e4-9c0c4377ff14;IngestionEndpoint=https://francecentral-1.in.applicationinsights.azure.com/;LiveEndpoint=https://francecentral.livediagnostics.monitor.azure.com/",
-        "OTEL_EXPORTER_OTLP_ENDPOINT" : "http://localhost:16083",
+        "OTEL_EXPORTER_OTLP_ENDPOINT": "http://127.0.0.1:16083"
       }
     },
     "IIS Express": {

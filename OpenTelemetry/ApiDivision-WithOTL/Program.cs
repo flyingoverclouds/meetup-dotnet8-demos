@@ -1,4 +1,3 @@
-using Azure.Monitor.OpenTelemetry.Exporter;
 using OpenTelemetry.Logs;
 using OpenTelemetry.Metrics;
 
@@ -11,18 +10,21 @@ builder.Services.AddOpenTelemetry()
 {
     #region Metrics
     // https://learn.microsoft.com/en-us/dotnet/core/diagnostics/built-in-metrics-aspnetcore
-    //metrics.AddMeter("Microsoft.AspNetCore.Hosting"); // dotnet 8 !
-    //metrics.AddMeter("Microsoft.AspNetCore.Server.Kestrel"); // dotnet 8 !
-    //metrics.AddMeter("System.Net.Http"); // dotnet 8 !
+    metrics.AddMeter("Microsoft.AspNetCore.Hosting"); // dotnet 8 !
+    metrics.AddMeter("Microsoft.AspNetCore.Server.Kestrel"); // dotnet 8 !
+    metrics.AddMeter("System.Net.Http"); // dotnet 8 !
 
     // https://learn.microsoft.com/en-us/dotnet/core/diagnostics/built-in-metrics-system-net
-    //metrics.AddMeter("http.client.request.duration");
+    metrics.AddMeter("http.client.request.duration");
     #endregion
 
     #region Exporters
-    metrics.AddConsoleExporter(); // Pour affichier les traces ... sur la console :)
+    metrics.AddConsoleExporter();
 
-
+    //  Par defaut , l'exporter OpenTelemetry utilise la variable d'environnement OTEL_EXPORTER_OTLP_ENDPOINT pour 
+    // récupérer le endpoint OTLP a alimenter. Dans cette démo, elle est définie dans le fichier launchSettings.json (Properties)
+    //      "OTEL_EXPORTER_OTLP_ENDPOINT" : "http://127.0.0.1:16083"
+    metrics.AddOtlpExporter();
     #endregion
 });
 
@@ -31,7 +33,12 @@ builder.Services.AddOpenTelemetry()
 // ajout du logger OpenTelemetry
 builder.Logging.AddOpenTelemetry(options =>
 {
-    //options.AddConsoleExporter();
+    options.AddConsoleExporter();
+
+    //  Par defaut , l'exporter OpenTelemetry utilise la variable d'environnement OTEL_EXPORTER_OTLP_ENDPOINT pour 
+    // récupérer le endpoint OTLP a alimenter. Dans cette démo, elle est définie dans le fichier launchSettings.json (Properties)
+    //      "OTEL_EXPORTER_OTLP_ENDPOINT" : "http://127.0.0.1:16083"
+    options.AddOtlpExporter();
 });
 
 

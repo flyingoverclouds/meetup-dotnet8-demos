@@ -17,7 +17,7 @@ namespace Yarp.Sample
     /// </summary>
     public class Startup
     {
-        private const string DEBUG_HEADER = "Debug";
+        private const string DEBUG_HEADER = "debug";
         private const string DEBUG_METADATA_KEY = "debug";
         private const string DEBUG_VALUE = "true";
 
